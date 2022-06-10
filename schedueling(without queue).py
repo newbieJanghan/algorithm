@@ -38,14 +38,14 @@ def processOrder(orders) :
             elif orders[nm[0]].time <= current and orders[nm[0]].time < orders[vip[0]].time:
                 result.append(nm[0])
                 current += orders[nm[0]].duration
-                nm = nm[1:]
+                del nm[0]
             elif orders[nm[0]].time > current:
                 current = orders[nm[0]].time
         result.append(vip[0])
         current += orders[vip[0]].duration
-        vip = vip[1:]
+        del vip[0]
     while len(nm) > 0:
         result.append(nm[0])
-        nm = nm[1:]
+        del nm[0]
     
     return result
