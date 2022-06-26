@@ -31,3 +31,20 @@ function solution(new_id) {
     const answer = array.join("")
     return answer;
 }
+
+// other solution
+function solution(new_id) {
+    const answer = new_id
+        .toLowerCase() // 1
+        .replace(/[^\w-_.]/g, '') // 2
+        .replace(/\.+/g, '.') // 3
+        .replace(/^\.|\.$/g, '') // 4
+        .replace(/^$/, 'a') // 5
+        .slice(0, 15).replace(/\.$/, ''); // 6
+    const len = answer.length;
+    return len > 2 ? answer : answer + answer.charAt(len - 1).repeat(3 - len);
+}
+
+// 반성
+// 1. 정규표현식 개념 부족
+// 2. 문자열 반복 repeat의 존재를 떠올리지 못함.
