@@ -16,7 +16,7 @@ function solution(lottos, win_nums) {
     return answer;
 }
 
-// others' solution
+// other solution 1
 function solution(lottos, win_nums) {
     const rank = [6, 6, 5, 4, 3, 2, 1];
 
@@ -33,3 +33,19 @@ function solution(lottos, win_nums) {
 // 2. 삼항연산자는 만능이 아님. 긴 if문을 줄여줄 순 있으나 더 간단한 코딩이 있음에도 코드가 길어질 수 있음. 
 // 따라서 삼항연산자를 쓰겠다 생각하고 접근하지 말고, 조건문으로 들이댄 후에 조건문이 길면 삼항연산자로 줄여보자는 생각 하기.
 // 3. rank 처리가 딱 맞아떨어지지 않을 때, index를 활용해보기. index는 딱 맞아 떨어지기 때문.
+
+
+// other solution 2
+function solution(lottos, win_nums) {
+    const answer = [];
+    const min = lottos.filter(n => win_nums.includes(n)).length;
+    const max = lottos.filter(n => n === 0).length + min;
+
+    max > 1 ? answer.push(7 - max) : answer.push(6);
+    min > 1 ? answer.push(7 - min) : answer.push(6);
+
+    return answer;
+}
+// 반성
+// 1. 완전 같은 로직이나 코드를 줄일 수 이는 걸 줄이지 않았음. 
+// 2. filter의 length가 어차피 숫자이니, 변수값을 0으로 설정해놓고 length를 더할 필요 없음.
